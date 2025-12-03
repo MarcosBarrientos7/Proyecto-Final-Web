@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificados - Marcos Manuel Rodríguez Barrientos</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <h1 class="logo">Portafolio</h1>
+            <ul class="menu">
+                <li><a href="Proyecto.html">Inicio</a></li>
+                <li><a href="index.html#proyectos">Proyectos</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CERTIFICADOS -->
+    <section id="certificados" class="certificados">
+    <h2>Certificados</h2>
+
+    <div class="carrusel-wrapper">
+        <div class="flecha flecha-izq" onclick="moverCarrusel(-300)">&#8249;</div>
+        <div class="cuadricula-certificados" id="carruselCertificados">
+            <!-- Tarjetas de certificados -->
+            <div class="tarjeta-certificado">
+                <img src="/Proyecto Final Web I/Images/Certificado 1.png" alt="Certificado 1">
+                <h3>Certificado 1</h3>
+                <p>Descripción breve del certificado 1</p>
+            </div>
+            <div class="tarjeta-certificado">
+                <img src="/Proyecto Final Web I/Images/Certificado 2.png" alt="Certificado 2">
+                <h3>Certificado 2</h3>
+                <p>Descripción breve del certificado 2</p>
+            </div>
+            <div class="tarjeta-certificado">
+                <img src="/Proyecto Final Web I/Images/Certificado 3.jfif" alt="Certificado 3">
+                <h3>Certificado 3</h3>
+                <p>Descripción breve del certificado 3</p>
+            </div>
+                        <div class="tarjeta-certificado">
+                <img src="/Proyecto Final Web I/Images/Certificado 3.jfif" alt="Certificado 3">
+                <h3>Certificado 3</h3>
+                <p>Descripción breve del certificado 3</p>
+            </div>
+                        <div class="tarjeta-certificado">
+                <img src="/Proyecto Final Web I/Images/Certificado 3.jfif" alt="Certificado 3">
+                <h3>Certificado 3</h3>
+                <p>Descripción breve del certificado 3</p>
+            </div>
+                        <div class="tarjeta-certificado">
+                <img src="/Proyecto Final Web I/Images/Certificado 3.jfif" alt="Certificado 3">
+                <h3>Certificado 3</h3>
+                <p>Descripción breve del certificado 3</p>
+            </div>
+                        <div class="tarjeta-certificado">
+                <img src="/Proyecto Final Web I/Images/Certificado 3.jfif" alt="Certificado 3">
+                <h3>Certificado 3</h3>
+                <p>Descripción breve del certificado 3</p>
+            </div>
+            <!-- Agrega más tarjetas según necesites -->
+        </div>
+        <div class="flecha flecha-der" onclick="moverCarrusel(300)">&#8250;</div>
+    </div>
+</section>
+
+<script>
+function moverCarrusel(distancia) {
+    const carrusel = document.getElementById('carruselCertificados');
+    carrusel.scrollBy({ left: distancia, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>

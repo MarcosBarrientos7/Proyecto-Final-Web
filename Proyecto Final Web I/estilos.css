@@ -10,7 +10,7 @@ body {
     color: #333;
 }
 
-/* NAV */
+/* ENCABEZADO */
 header {
     background: linear-gradient(135deg, #6e00ff, #8e2de2);
     color: white;
@@ -29,19 +29,19 @@ nav {
     font-weight: bold;
 }
 
-.nav-links {
+.menu {
     display: flex;
     list-style: none;
     gap: 20px;
 }
 
-.nav-links a {
+.menu a {
     color: white;
     text-decoration: none;
     font-weight: bold;
 }
 
-.nav-links a:hover {
+.menu a:hover {
     color: #ffe600;
 }
 
@@ -51,14 +51,14 @@ nav {
     cursor: pointer;
 }
 
-/* FOTO */
-.profile-photo {
+/* FOTO DE PERFIL */
+.foto-perfil {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.profile-photo img {
+.foto-perfil img {
     width: 160px;
     height: 160px;
     object-fit: cover;
@@ -67,21 +67,21 @@ nav {
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
 }
 
-/* HERO */
-.hero {
+/* PRESENTACIÓN */
+.presentacion {
     text-align: center;
     margin-top: 30px;
 }
 
-.hero h2 {
+.presentacion h2 {
     font-size: 42px;
 }
 
-.highlight {
+.resaltado {
     color: #ffe600;
 }
 
-.btn {
+.boton {
     background: #ffe600;
     padding: 12px 25px;
     border-radius: 5px;
@@ -99,52 +99,63 @@ section {
     padding: 60px 10%;
 }
 
-.about {
+.sobre-mi {
     text-align: center;
 }
 
-.about p {
+.sobre-mi p {
     max-width: 700px;
     font-size: 18px;
     margin: auto;
 }
 
 /* PROYECTOS */
-.project-grid {
+.cuadricula-proyectos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
 }
 
-.project-card {
+.tarjeta-proyecto {
     background: white;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 10px;
     text-align: center;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid #eee;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    border: 1px solid #ddd;
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.project-card:hover {
+.tarjeta-proyecto:hover {
     transform: scale(1.03);
-    transition: 0.2s;
 }
 
-.project-card a {
+.tarjeta-proyecto img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #eee;
+}
+
+.tarjeta-proyecto a {
     display: inline-block;
-    margin-top: 15px;
+    margin-top: auto;
     color: #6e00ff;
     text-decoration: none;
     font-weight: bold;
 }
 
 /* CONTACTO */
-#contact h2 {
+#contacto h2 {
     text-align: center;
     margin-bottom: 15px;
 }
 
-.contact-card {
+.tarjeta-contacto {
     background: white;
     padding: 35px;
     max-width: 550px;
@@ -154,7 +165,7 @@ section {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
-.contact-card p {
+.tarjeta-contacto p {
     margin-bottom: 20px;
     font-size: 17px;
 }
@@ -183,9 +194,9 @@ footer {
     color: white;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVO */
 @media (max-width: 768px) {
-    .nav-links {
+    .menu {
         display: none;
         flex-direction: column;
         background: #6e00ff;
@@ -197,4 +208,139 @@ footer {
     .menu-toggle {
         display: block;
     }
+}
+
+/* CERTIFICADOS */
+.certificados {
+    padding: 60px 10%;
+    text-align: center;
+}
+
+/* Carrusel horizontal para certificados */
+.cuadricula-certificados {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+}
+
+.cuadricula-certificados::-webkit-scrollbar {
+    height: 12px;
+}
+
+.cuadricula-certificados::-webkit-scrollbar-thumb {
+    background-color: #6e00ff;
+    border-radius: 6px;
+}
+
+/* Tarjetas más grandes */
+.tarjeta-certificado {
+    min-width: 700px;
+    max-width: 700px;
+    flex: 0 0 auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.tarjeta-certificado img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.tarjeta-certificado h3 {
+    margin-top: 15px;
+    font-size: 20px;
+    color: #6e00ff;
+}
+
+.tarjeta-certificado p {
+    margin-top: 12px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+/* FLECHAS PARA CARRUSEL */
+.carrusel-wrapper {
+    position: relative;
+}
+
+.flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 32px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    user-select: none;
+}
+
+.flecha-izq {
+    left: 0;
+}
+
+.flecha-der {
+    right: 0;
+}
+
+.flecha:hover {
+    background: #6e00ff;
+    color: white;
+}
+
+/* CONTENEDOR GENERAL EN DOS COLUMNAS */
+.sobre-lenguajes {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 40px;
+    gap: 40px;
+}
+
+/* SOBRE MÍ IZQUIERDA */
+.sobre {
+    flex: 1;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* CUADRO LENGUAJES DERECHA */
+.lenguajes {
+    flex: 1;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* CONTENEDOR IMÁGENES */
+.lenguajes-imgs {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 10px;
+}
+
+/* IMÁGENES */
+.lenguajes-imgs img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
 }

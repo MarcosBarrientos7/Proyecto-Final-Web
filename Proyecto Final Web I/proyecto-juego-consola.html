@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego en Consola C# - Marcos Manuel Rodríguez Barrientos</title>
+    <link rel="stylesheet" href="estilosProyectos.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <h1 class="logo">Portafolio</h1>
+        <ul class="menu">
+            <li><a href="Proyecto.html#sobreMi">Inicio</a></li>
+            <li><a href="Proyecto.html#proyectos">Proyectos</a></li>
+            <li><a href="Proyecto.html#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1>Juego en Consola C#</h1>
+
+    <div class="contenedor-proyecto">
+        <!-- VIDEO DEL PROYECTO -->
+        <div class="video-proyecto">
+            <video autoplay loop>
+                <source src="/Proyecto Final Web I/Videos/Juego Consola.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+        </div>
+
+        <!-- DESCRIPCIÓN DEL PROYECTO -->
+        <div class="descripcion-proyecto">
+            <h2>Descripción</h2>
+            <p>
+                Este juego en consola está realizado en C# usando caracteres ASCII para representar
+                al personaje y los elementos del juego. El objetivo es recolectar monedas mientras
+                se evitan obstáculos. Ideal para practicar la lógica de juegos.
+            </p>
+        </div>
+    </div>
+
+    <!-- CÓDIGO DEL PROYECTO -->
+    <section>
+        <h2>Código del Proyecto</h2>
+        <pre><code>
+// Ejemplo de código en C#
+using System;
+
+class Program {
+    static void Main() {
+        string[,] escenario = new string[20, 40];
+        int filas = 20;
+        int columnas = 40;
+ 
+        int i = 0;
+        int j = 0;
+ 
+        // Posición inicial del personaje
+        int px = 5;
+        int py = 10;
+ 
+        // Monedas fijas (puede haber hasta 10)
+        int[,] monedas = new int[10, 2];
+        monedas[0, 0] = 3; monedas[0, 1] = 8;
+        monedas[1, 0] = 6; monedas[1, 1] = 15;
+        monedas[2, 0] = 10; monedas[2, 1] = 25;
+        monedas[3, 0] = 14; monedas[3, 1] = 5;
+        monedas[4, 0] = 17; monedas[4, 1] = 30;
+        int cantidadMonedas = 5;
+ 
+        int monedasRecolectadas = 0;
+ 
+        //Bucle principal
+        while (true)
+        {
+            //Limpiar fondo
+            i = 0;
+            while (i < filas)
+            {
+                j = 0;
+                while (j < columnas)
+                {
+                    escenario[i, j] = ".";
+                    j++;
+                }
+                i++;
+            }
+ 
+            //Dibujar monedas
+            i = 0;
+            while (i < cantidadMonedas)
+            {
+                int mx = monedas[i, 0];
+                int my = monedas[i, 1];
+                if (mx != -1 && my != -1)
+                {
+                    escenario[mx, my] = "$";
+                }
+                i++;
+            }
+ 
+            //Dibujar personaje
+            escenario[px, py + 1] = "O";
+            escenario[px + 1, py] = "/";
+            escenario[px + 1, py + 1] = "|";
+            escenario[px + 1, py + 2] = "\\";
+            escenario[px + 2, py] = "/";
+            escenario[px + 2, py + 2] = "\\";
+ 
+            //Mostrar escenario
+            Console.Clear();
+            i = 0;
+            while (i < filas)
+            {
+                j = 0;
+                while (j < columnas)
+                {
+                    Console.Write(escenario[i, j]);
+                    j++;
+                }
+                Console.WriteLine();
+                i++;
+            }
+ 
+            //Mostrar contador de monedas
+            Console.WriteLine();
+            Console.WriteLine("Monedas recolectadas: " + monedasRecolectadas);
+            Console.WriteLine("WASD para mover, B para bailar, ESC para salir");
+ 
+            //Leer tecla
+            ConsoleKey tecla = Console.ReadKey(true).Key;
+ 
+            //Movimiento
+            if (tecla == ConsoleKey.W && px > 0) px--;
+            if (tecla == ConsoleKey.S && px + 3 < filas) px++;
+            if (tecla == ConsoleKey.A && py > 0) py--;
+            if (tecla == ConsoleKey.D && py + 3 < columnas) py++;
+ 
+            //Recolectar moneda
+            i = 0;
+            while (i < cantidadMonedas)
+            {
+                int mx = monedas[i, 0];
+                int my = monedas[i, 1];
+ 
+                if (mx != -1 && my != -1 && px == mx && py + 1 == my)
+                {
+                    monedasRecolectadas++;
+                    monedas[i, 0] = -1;
+                    monedas[i, 1] = -1;
+                }
+                i++;
+            }
+ 
+            //Baile
+            if (tecla == ConsoleKey.B)
+            {
+                int contador = 0;
+                while (contador < 6)
+                {
+                    if (contador % 2 == 0)
+                    {
+                        escenario[px + 1, py] = "\\";
+                        escenario[px + 1, py + 2] = "/";
+                        escenario[px + 2, py] = "/";
+                        escenario[px + 2, py + 2] = "\\";
+                    }
+                    else
+                    {
+                        escenario[px + 1, py] = "/";
+                        escenario[px + 1, py + 2] = "\\";
+                        escenario[px + 2, py] = "\\";
+                        escenario[px + 2, py + 2] = "/";
+                    }
+ 
+                    Console.Clear();
+                    i = 0;
+                    while (i < filas)
+                    {
+                        j = 0;
+                        while (j < columnas)
+                        {
+                            Console.Write(escenario[i, j]);
+                            j++;
+                        }
+                        Console.WriteLine();
+                        i++;
+                    }
+ 
+                    Console.WriteLine();
+                    Console.WriteLine("Monedas recolectadas: " + monedasRecolectadas);
+                    Thread.Sleep(200);
+ 
+                    contador++;
+                }
+            }
+ 
+            //Salir
+            if (tecla == ConsoleKey.Escape) break;
+        }
+ 
+        Console.ReadKey();
+    }
+}
+        </code></pre>
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 Marcos Manuel Rodríguez Barrientos. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>
