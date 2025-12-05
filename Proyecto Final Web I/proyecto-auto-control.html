@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Arduino - Marcos Manuel Rodríguez Barrientos</title>
+    <link rel="stylesheet" href="estilosProyectoArduino.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <h1 class="logo">Portafolio</h1>
+        <p>Marcos Manuel Rodríguez Barrientos</p>
+        <ul class="menu">
+            <li><a href="Proyecto.html#sobreMi">Inicio</a></li>
+            <li><a href="Proyecto.html#proyectos">Proyectos</a></li>
+            <li><a href="Proyecto.html#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class="banner-proyecto">
+        <h1>Fire Bot</h1>
+        <p>Proyecto de robótica con Arduino para control de movimientos y sensores.</p>
+    </div>
+
+    <div class="contenedor-proyecto">
+        <!-- IMAGEN 1 -->
+        <div class="video-proyecto">
+            <img src="Images/FireBot.png" alt="Robot Arduino 1">
+        </div>
+
+        <!-- DESCRIPCIÓN DEL PROYECTO -->
+        <div class="descripcion-proyecto">
+            <h2>Descripción</h2>
+            <p>
+                Este robot fue desarrollado con Arduino UNO, Microcnontrolaor ESP-32 CAM y una bomba de agua,
+                intentando hacer la simulación de un carro bombero el cual se puede controlar remotamente
+                mediante Wi-Fi y Bluetooth. Permite aprender conceptos de electrónica,
+                programación y robótica básica.
+            </p>
+        </div>
+    </div>
+
+    <!-- DESARROLLO DEL PROYECTO -->
+    <div class="desarrollo-proyecto">
+        <h2>Desarrollo</h2>
+        <ul>
+            <li><b>Plataforma:</b> Arduino UNO</li>
+            <li><b>Lenguaje:</b> C/C++ para Arduino</li>
+            <li><b>Componentes:</b> Motores DC, sensores ultrasónicos, protoboard</li>
+            <li><b>Objetivo:</b> Crear un robot que pueda desplazarse evitando obstáculos
+                de manera autónoma y controlar su movimiento con programación básica.</li>
+        </ul>
+    </div>
+
+</main>
+
+<section class="codigo-proyecto">
+    <h2>Código del Proyecto</h2>
+    <pre><code>
+        #include "esp_camera.h"
+#include <Arduino.h>
+#include <WiFi.h>
+#include <AsyncTCP.h>
+#include <ESPAsyncWebServer.h>
+#include <iostream>
+#include <sstream>
+
+struct MOTOR_PINS
+{
+  int pinEn;  
+  int pinIN1;
+  int pinIN2;    
+};
+
+std::vector<MOTOR_PINS> motorPins = 
+{
+  {12, 13, 15},  //RIGHT_MOTOR Pins (EnA, IN1, IN2)
+  {12, 14, 2},  //LEFT_MOTOR  Pins (EnB, IN3, IN4)
+};
+#define LIGHT_PIN 4
+
+#define UP 1
+#define DOWN 2
+#define LEFT 3
+#define RIGHT 4
+#define STOP 0
+
+#define RIGHT_MOTOR 0
+#define LEFT_MOTOR 1
+
+#define FORWARD 1
+#define BACKWARD -1
+
+const int PWMFreq = 1000; /* 1 KHz */
+const int PWMResolution = 8;
+const int PWMSpeedChannel = 2;
+const int PWMLightChannel = 3;
+
+//Camera related constants
+#define PWDN_GPIO_NUM     32
+#define RESET_GPIO_NUM    -1
+#define XCLK_GPIO_NUM      0
+#define SIOD_GPIO_NUM     26
+#define SIOC_GPIO_NUM     27
+#define Y9_GPIO_NUM       35
+#define Y8_GPIO_NUM       34
+#define Y7_GPIO_NUM       39
+#define Y6_GPIO_NUM       36
+#define Y5_GPIO_NUM       21
+#define Y4_GPIO_NUM       19
+#define Y3_GPIO_NUM       18
+#define Y2_GPIO_NUM        5
+#define VSYNC_GPIO_NUM    25
+#define HREF_GPIO_NUM     23
+#define PCLK_GPIO_NUM     22
+
+const char* ssid     = "Cam_Car";
+const char* password = "12345678";
+
+AsyncWebServer server(80);
+AsyncWebSocket wsCamera("/Camera");
+AsyncWebSocket wsCarInput("/CarInput");
+uint32_t cameraClientId = 0;
+
+void rotateMotor(int motorNumber, int motorDirection)
+{
+  if (motorDirection == FORWARD)
+  {
+    digitalWrite(motorPins[motorNumber].pinIN1, HIGH);
+    digitalWrite(motorPins[motorNumber].pinIN2, LOW);    
+  }
+  else if (motorDirection == BACKWARD)
+  {
+    digitalWrite(motorPins[motorNumber].pinIN1, LOW);
+    digitalWrite(motorPins[motorNumber].pinIN2, HIGH);     
+  }
+  else
+  {
+    digitalWrite(motorPins[motorNumber].pinIN1, LOW);
+    digitalWrite(motorPins[motorNumber].pinIN2, LOW);       
+  }
+}
+
+void moveCar(int inputValue)
+{
+  Serial.printf("Got value as %d\n", inputValue);  
+  switch(inputValue)
+  {
+
+    case UP:
+      rotateMotor(RIGHT_MOTOR, FORWARD);
+      rotateMotor(LEFT_MOTOR, FORWARD);                  
+      break;
+  
+    case DOWN:
+      rotateMotor(RIGHT_MOTOR, BACKWARD);
+      rotateMotor(LEFT_MOTOR, BACKWARD);  
+      break;
+  
+    case LEFT:
+      rotateMotor(RIGHT_MOTOR, FORWARD);
+      rotateMotor(LEFT_MOTOR, BACKWARD);  
+      break;
+  
+    case RIGHT:
+      rotateMotor(RIGHT_MOTOR, BACKWARD);
+      rotateMotor(LEFT_MOTOR, FORWARD); 
+      break;
+ 
+    case STOP:
+      rotateMotor(RIGHT_MOTOR, STOP);
+      rotateMotor(LEFT_MOTOR, STOP);    
+      break;
+  
+    default:
+      rotateMotor(RIGHT_MOTOR, STOP);
+      rotateMotor(LEFT_MOTOR, STOP);    
+      break;
+  }
+}
+
+void handleRoot(AsyncWebServerRequest *request) 
+{
+  request->send_P(200, "text/html", htmlHomePage);
+}
+
+void handleNotFound(AsyncWebServerRequest *request) 
+{
+    request->send(404, "text/plain", "File Not Found");
+}
+
+void onCarInputWebSocketEvent(AsyncWebSocket *server, 
+                      AsyncWebSocketClient *client, 
+                      AwsEventType type,
+                      void *arg, 
+                      uint8_t *data, 
+                      size_t len) 
+{                      
+  switch (type) 
+  {
+    case WS_EVT_CONNECT:
+      Serial.printf("WebSocket client #%u connected from %s\n", client->id(), client->remoteIP().toString().c_str());
+      break;
+    case WS_EVT_DISCONNECT:
+      Serial.printf("WebSocket client #%u disconnected\n", client->id());
+      moveCar(0);
+      ledcWrite(PWMLightChannel, 0);  
+      break;
+    case WS_EVT_DATA:
+      AwsFrameInfo *info;
+      info = (AwsFrameInfo*)arg;
+      if (info->final && info->index == 0 && info->len == len && info->opcode == WS_TEXT) 
+      {
+        std::string myData = "";
+        myData.assign((char *)data, len);
+        std::istringstream ss(myData);
+        std::string key, value;
+        std::getline(ss, key, ',');
+        std::getline(ss, value, ',');
+        Serial.printf("Key [%s] Value[%s]\n", key.c_str(), value.c_str()); 
+        int valueInt = atoi(value.c_str());     
+        if (key == "MoveCar")
+        {
+          moveCar(valueInt);        
+        }
+        else if (key == "Speed")
+        {
+          ledcWrite(PWMSpeedChannel, valueInt);
+        }
+        else if (key == "Light")
+        {
+          ledcWrite(PWMLightChannel, valueInt);         
+        }     
+      }
+      break;
+    case WS_EVT_PONG:
+    case WS_EVT_ERROR:
+      break;
+    default:
+      break;  
+  }
+}
+    </code></pre>
+</section>
+<footer>
+    <p>© 2025 Marcos Manuel Rodríguez Barrientos. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Memoria - Marcos Manuel Rodríguez Barrientos</title>
+    <link rel="stylesheet" href="estilosProyectos.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <h1 class="logo">Portafolio</h1>
+        <ul class="menu">
+            <li><a href="Proyecto.html#sobreMi">Inicio</a></li>
+            <li><a href="Proyecto.html#proyectos">Proyectos</a></li>
+            <li><a href="Proyecto.html#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class="banner-proyecto">
+        <h1>Juego de Memoria</h1>
+        <p>Juego interactivo para ejercitar la memoria visual y concentración.</p>
+    </div>
+
+    <div class="contenedor-proyecto">
+        <!-- IMAGEN DEL PROYECTO -->
+        <div class="video-proyecto">
+            <video src="/Proyecto Final Web I/Videos/Juego Memoria.mp4" autoplay loop></video>
+        </div>
+
+        <!-- DESCRIPCIÓN DEL PROYECTO -->
+        <div class="descripcion-proyecto">
+            <h2>Descripción</h2>
+            <p>
+                Este juego de memoria fue desarrollado en C# con interfaz WPF. 
+                Consiste en emparejar cartas iguales en la menor cantidad de intentos posibles.
+                Es ideal para practicar lógica de programación, manejo de matrices y todo lo que conlleva 
+                Programacion orientada a objetos y sus pilares.
+            </p>
+        </div>
+    </div>
+
+    <!-- DESARROLLO DEL PROYECTO -->
+    <div class="desarrollo-proyecto">
+        <h2>Desarrollo</h2>
+        <ul>
+            <li><strong>Plataforma:</strong> Windows WPF</li>
+            <li><strong>Lenguaje:</strong> C#</li>
+            <li><strong>Componentes:</strong> Botones, imágenes, eventos de clic</li>
+            <li><strong>Objetivo:</strong> Mejorar la memoria visual y concentración mediante la interacción con la interfaz.</li>
+        </ul>
+    </div>
+
+    <!-- CÓDIGO DEL PROYECTO -->
+    <section class="codigo-proyecto">
+        <h2>Código del Proyecto</h2>
+        <pre><code>
+// Ejemplo en C#
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
+using JuegoMemoriaWPF.Modelos;
+using JuegoMemoriaWPF.Servicios;
+
+namespace JuegoMemoriaWPF
+{
+    /// <summary>
+    /// Ventana de inicio de sesión.
+    /// El registro ahora se realiza en una ventana aparte.
+    /// Incluye un botón específico para el modo administrador.
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        private readonly ServicioArchivosUsuarios _servicioUsuarios;
+
+        // Código del administrador (puedes cambiarlo si quieres).
+        private const string CodigoAdministrador = "ADMIN123";
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            _servicioUsuarios = new ServicioArchivosUsuarios("usuarios.txt");
+        }
+
+        private List<Jugador> CargarJugadores()
+        {
+            // Siempre cargamos desde archivo para tener los datos actualizados
+            return _servicioUsuarios.CargarJugadores();
+        }
+
+        private void BtnEntrar_Click(object sender, RoutedEventArgs e)
+        {
+            string nombre = txtUsuarioLogin.Text.Trim();
+            string contrasena = txtContrasenaLogin.Password.Trim();
+
+            if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(contrasena))
+            {
+                MessageBox.Show("Escribe usuario y contraseña.");
+                return;
+            }
+
+            // Solo jugadores normales
+            var listaJugadores = CargarJugadores();
+            var jugador = listaJugadores.FirstOrDefault(j => j.NombreUsuario == nombre);
+
+            if (jugador == null || !jugador.ValidarContrasena(contrasena))
+            {
+                MessageBox.Show("Usuario o contraseña incorrectos.");
+                return;
+            }
+
+            var ventanaJuego = new VentanaJuego(jugador);
+            ventanaJuego.Show();
+            this.Close();
+        }
+
+        private void BtnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            string nombre = txtUsuarioLogin.Text.Trim();
+            string contrasena = txtContrasenaLogin.Password.Trim();
+
+            if (nombre.ToLower() != "admin")
+            {
+                MessageBox.Show("Para entrar al modo administrador el usuario debe ser 'admin'.");
+                return;
+            }
+
+            if (contrasena != CodigoAdministrador)
+            {
+                MessageBox.Show("Código de administrador incorrecto.");
+                return;
+            }
+
+            var jugadores = CargarJugadores();
+            var admin = new Administrador("admin", CodigoAdministrador);
+            var ventanaAdmin = new VentanaAdministrador(jugadores, _servicioUsuarios, admin);
+            ventanaAdmin.Show();
+            this.Close();
+        }
+
+        private void BtnIrRegistro_Click(object sender, RoutedEventArgs e)
+        {
+            var ventanaRegistro = new VentanaRegistro(_servicioUsuarios);
+            ventanaRegistro.Owner = this;
+            ventanaRegistro.ShowDialog();
+        }
+    }
+}
+
+        </code></pre>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2025 Marcos Manuel Rodríguez Barrientos. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>

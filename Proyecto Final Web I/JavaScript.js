@@ -1,39 +1,39 @@
-// --- MENÚ RESPONSIVE ---
 function toggleMenu() {
-    const nav = document.getElementById("navLinks");
-    nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+    const menu = document.getElementById('menu');
+    menu.classList.toggle('active'); // alterna la clase active
 }
 
-// --- VALIDACIÓN DEL FORMULARIO ---
-function validarFormulario(event) {
-    event.preventDefault();
 
-    let nombre = document.querySelector("input[placeholder='Tu nombre']").value;
-    let correo = document.querySelector("input[placeholder='Tu email']").value;
-    let mensaje = document.querySelector("textarea").value;
+// FORMULARIOOO
+// Obtener el formulario
+const formulario = document.getElementById('formulario-contacto');
 
-    if (nombre === "" || correo === "" || mensaje === "") {
-        alert("Por favor llena todos los campos.");
-    } else {
-        alert("Mensaje enviado correctamente.");
+formulario.addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita que se envíe automáticamente
+
+    // Obtener los valores
+    const nombre = formulario.querySelector('input[type="text"]').value.trim();
+    const email = formulario.querySelector('input[type="email"]').value.trim();
+    const mensaje = formulario.querySelector('textarea').value.trim();
+
+    // Validación básica
+    if (nombre === "") {
+        alert("Por favor ingresa tu nombre.");
+        return;
     }
-}
 
-// --- TEXTO DINÁMICO ---
-let textos = ["desarrollo web", "la tecnología", "la programación", "la innovación"];
-let indice = 0;
+    // Validación sencilla de email
+    if (!(email.includes("@") && email.includes(".") && email.indexOf("@") < email.lastIndexOf("."))) {
+        alert("Por favor ingresa un correo electrónico válido.");
+        return;
+    }
 
-function cambiarTexto() {
-    document.getElementById("texto-dinamico").innerText = textos[indice];
-    indice = (indice + 1) % textos.length;
-}
+    if (mensaje === "") {
+        alert("Por favor ingresa un mensaje.");
+        return;
+    }
 
-setInterval(cambiarTexto, 2000);
-
-// --- RESALTAR PROYECTO ---
-function seleccionarProyecto(card) {
-    let cards = document.querySelectorAll(".project-card");
-    cards.forEach(c => c.style.border = "1px solid #eee");
-
-    card.style.border = "2px solid #6e00ff";
-}
+    // Si todo está bien, puedes hacer algo, por ejemplo enviar el formulario
+    alert("¡Formulario enviado correctamente!");
+    formulario.reset(); // Limpiar el formulario
+});
