@@ -33,7 +33,6 @@ formulario.addEventListener('submit', function(event) {
         return;
     }
 
-    // Si todo está bien, puedes hacer algo, por ejemplo enviar el formulario
     alert("¡Formulario enviado correctamente!");
     formulario.reset(); // Limpiar el formulario
 });

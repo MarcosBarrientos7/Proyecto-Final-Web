@@ -55,6 +55,16 @@ nav {
 }
 
 /* ============================
+   BOTÓN HAMBURGUESA (AÑADIDO)
+============================ */
+.menu-toggle {
+    display: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: white;
+}
+
+/* ============================
    SECCIÓN CERTIFICADOS
 ============================ */
 .certificados {
@@ -78,10 +88,12 @@ nav {
 .cuadricula-certificados {
     display: flex;
     gap: 40px;
-    overflow-x: auto;
+    overflow: hidden; /* oculta la barra de scroll */
     padding: 20px 0;
-    scroll-behavior: smooth;
-    height: 500px; /* altura consistente para showcase */
+    height: 500px;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    will-change: transform;
 }
 
 .cuadricula-certificados::-webkit-scrollbar {
@@ -160,9 +172,7 @@ nav {
 .flecha-izq { left: -25px; }
 .flecha-der { right: -25px; }
 
-/* ============================
-   FOOTER
-============================ */
+/* FOOTER */
 footer {
     text-align: center;
     padding: 25px 10%;
@@ -173,9 +183,7 @@ footer {
     margin-top: 40px;
 }
 
-/* ============================
-   RESPONSIVO
-============================ */
+/*  RESPONSIVO */
 @media (max-width: 1024px) {
     .cuadricula-certificados {
         height: 450px;
@@ -189,22 +197,45 @@ footer {
 }
 
 @media (max-width: 768px) {
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        background: #0A0E27;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        padding: 20px;
+        gap: 15px;
+        border-top: 2px solid #00E0FF;
+        text-align: center;
+    }
+
+    .menu.menu-open {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
     .cuadricula-certificados {
-        display: block;       /* ya no flex */
-        overflow-x: visible;  /* quitar scroll horizontal */
-        height: auto;         /* altura automática */
-        gap: 0;               /* sin gap horizontal */
+        display: block;       
+        overflow-x: visible;  
+        height: auto;         
+        gap: 0;               
         padding: 0;
     }
 
     .tarjeta-certificado {
-        min-width: 100%;      /* ocupan todo el ancho */
+        min-width: 100%;      
         max-width: 100%;
-        margin-bottom: 20px;  /* separación vertical entre tarjetas */
-        height: auto;         /* altura automática */
+        margin-bottom: 20px;  
+        height: auto;         
     }
 
     .flecha {
-        display: none;        /* ocultar flechas en celular */
+        display: none;
     }
 }
