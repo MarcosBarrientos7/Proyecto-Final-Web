@@ -1,251 +1,240 @@
-/* ============================
-   ESTILO GENERAL
-============================ */
+/* ESTILO GENERAL */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    margin: 0; /* elimina los márgenes por defecto de todos los elementos */
+    padding: 0; /* elimina el padding por defecto */
+    box-sizing: border-box; /* incluye padding y border dentro del ancho y alto total */
+    font-family: Arial, Helvetica, sans-serif; /* define la fuente global */
 }
 
 body {
-    background: #0A0E27;
-    color: #D1E8E4;
+    background: #0A0E27; /* fondo azul oscuro */
+    color: #D1E8E4; /* color de texto principal */
 }
 
-/* ============================
-   HEADER
-============================ */
+/* HEADER */
 header {
-    background: linear-gradient(135deg, #28527A, #1B2A49);
-    padding: 20px 10%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background: linear-gradient(135deg, #28527A, #1B2A49); /* degradado diagonal */
+    padding: 20px 10%; /* espacio interno vertical y horizontal */
+    position: sticky; /* hace que el header permanezca visible al hacer scroll */
+    top: 0; /* posición sticky desde arriba */
+    z-index: 1000; /* lo mantiene sobre otros elementos */
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; /* activa Flexbox para distribuir elementos */
+    justify-content: space-between; /* separa logo y menú */
+    align-items: center; /* centra verticalmente los elementos */
 }
 
 .logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #00E0FF;
+    font-size: 28px; /* tamaño del texto del logo */
+    font-weight: bold; /* negrita */
+    color: #00E0FF; /* color azul brillante */
 }
 
-/* Menú normal */
+/* MENÚ NORMAL */
 .menu {
-    display: flex;
-    list-style: none;
-    gap: 25px;
+    display: flex; /* organiza los links horizontalmente */
+    list-style: none; /* elimina viñetas */
+    gap: 25px; /* espacio entre items del menú */
 }
 
 .menu li a {
-    text-decoration: none;
-    color: #D1E8E4;
-    font-weight: bold;
-    transition: 0.3s;
+    text-decoration: none; /* quita subrayado */
+    color: #D1E8E4; /* color de link */
+    font-weight: bold; /* negrita */
+    transition: 0.3s; /* transición suave al cambiar propiedades */
 }
 
 .menu li a:hover {
-    color: #8AC4D0;
+    color: #8AC4D0; /* cambia el color al pasar el mouse */
 }
 
-/* Botón hamburguesa */
+/* BOTÓN HAMBURGUESA */
 .menu-toggle {
-    display: none;
-    font-size: 28px;
-    color: #00E0FF;
-    cursor: pointer;
+    display: none; /* oculto en escritorio */
+    font-size: 28px; /* tamaño del icono ☰ */
+    color: #00E0FF; /* color azul */
+    cursor: pointer; /* cursor puntero */
 }
 
-/* ============================
-   BANNER DEL PROYECTO
-============================ */
+/* BANNER DEL PROYECTO */
 .banner-proyecto {
-    text-align: center;
-    padding: 60px 10%;
+    text-align: center; /* centra contenido horizontalmente */
+    padding: 60px 10%; /* espacio interno */
 }
 
 .banner-proyecto h1 {
-    font-size: 48px;
-    color: #00E0FF;
-    margin-bottom: 15px;
+    font-size: 48px; /* tamaño de título principal */
+    color: #00E0FF; /* color azul brillante */
+    margin-bottom: 15px; /* espacio inferior */
 }
 
 .banner-proyecto p {
-    font-size: 20px;
-    color: #D1E8E4;
+    font-size: 20px; /* tamaño de párrafo */
+    color: #D1E8E4; /* color texto */
 }
 
-/* ============================
-   CONTENEDOR DEL PROYECTO
-============================ */
+/* CONTENEDOR DEL PROYECTO*/
 .contenedor-proyecto {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    padding: 20px 10%;
+    display: flex; /* Flexbox horizontal */
+    flex-wrap: wrap; /* permite que los elementos bajen de fila si no caben */
+    justify-content: center; /* centra horizontalmente */
+    gap: 40px; /* espacio entre elementos */
+    padding: 20px 10%; /* espacio interno */
 }
 
 .video-proyecto {
-    flex: 1 1 400px;
-    max-width: 500px;
+    flex: 1 1 400px; /* ocupa espacio flexible, mínimo 400px */
+    max-width: 500px; /* ancho máximo */
 }
 
 .video-proyecto img {
-    width: 100%;
-    border-radius: 12px;
-    border: 4px solid #00E0FF;
-    box-shadow: 0 8px 20px rgba(0,224,255,0.6);
+    width: 100%; /* ocupa todo el ancho del contenedor */
+    border-radius: 12px; /* bordes redondeados */
+    border: 4px solid #00E0FF; /* borde azul */
+    box-shadow: 0 8px 20px rgba(0,224,255,0.6); 
+    /* box-shadow:
+       0 = desplazamiento horizontal
+       8px = desplazamiento vertical
+       20px = difuminado
+       rgba(0,224,255,0.6) = color azul semitransparente */
 }
 
 .descripcion-proyecto {
-    flex: 1 1 400px;
-    max-width: 500px;
-    color: #D1E8E4;
-    background: #1B2A49;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0,224,255,0.4);
+    flex: 1 1 400px; /* ocupa espacio flexible */
+    max-width: 500px; /* ancho máximo */
+    color: #D1E8E4; /* color texto */
+    background: #1B2A49; /* fondo azul oscuro */
+    padding: 25px; /* espacio interno */
+    border-radius: 12px; /* bordes redondeados */
+    box-shadow: 0 6px 20px rgba(0,224,255,0.4); /* sombra azul suave */
 }
 
 .descripcion-proyecto h2 {
-    font-size: 32px;
-    color: #00E0FF;
-    margin-bottom: 15px;
+    font-size: 32px; /* tamaño subtítulo */
+    color: #00E0FF; /* color azul */
+    margin-bottom: 15px; /* espacio inferior */
 }
 
 .descripcion-proyecto p {
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 16px; /* tamaño párrafo */
+    line-height: 1.5; /* espacio entre líneas */
 }
 
-/* ============================
-   DESARROLLO DEL PROYECTO
-============================ */
+/* DESARROLLO DEL PROYECTO */
 .desarrollo-proyecto {
-    background: #28527A;
-    padding: 35px 40px;
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-    margin: 40px auto;
-    max-width: 900px;
-    text-align: center;
+    background: #28527A; /* fondo azul medio */
+    padding: 35px 40px; /* espacio interno */
+    border-radius: 14px; /* bordes redondeados */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4); /* sombra negra difusa */
+    margin: 40px auto; /* espacio vertical y centrado horizontal */
+    max-width: 900px; /* ancho máximo */
+    text-align: center; /* centra contenido */
 }
 
 .desarrollo-proyecto h2 {
-    font-size: 38px;
-    margin-bottom: 25px;
-    color: #00E0FF;
+    font-size: 38px; /* tamaño título */
+    margin-bottom: 25px; /* espacio inferior */
+    color: #00E0FF; /* color azul */
 }
 
 .desarrollo-proyecto ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 0;
-    align-items: center;
+    list-style: none; /* sin viñetas */
+    display: flex; /* Flexbox vertical */
+    flex-direction: column; /* columna de items */
+    gap: 15px; /* espacio entre items */
+    padding: 0; /* elimina padding */
+    align-items: center; /* centra items horizontalmente */
 }
 
 .desarrollo-proyecto ul li {
-    font-size: 20px;
-    padding: 14px 18px;
-    border-left: 5px solid #00E0FF;
-    background: #1B2A49;
-    border-radius: 8px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.25);
-    transition: transform 0.2s, box-shadow 0.2s;
-    width: 90%;
-    text-align: left;
+    font-size: 20px; /* tamaño texto */
+    padding: 14px 18px; /* espacio interno */
+    border-left: 5px solid #00E0FF; /* barra azul a la izquierda */
+    background: #1B2A49; /* fondo azul oscuro */
+    border-radius: 8px; /* bordes redondeados */
+    box-shadow: 0 3px 12px rgba(0,0,0,0.25); /* sombra negra suave */
+    transition: transform 0.2s, box-shadow 0.2s; /* animación suave */
+    width: 90%; /* ancho relativo al contenedor */
+    text-align: left; /* alinea texto a la izquierda */
 }
 
 .desarrollo-proyecto ul li:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0,224,255,0.5);
+    transform: translateY(-2px); /* levanta item 2px */
+    box-shadow: 0 6px 16px rgba(0,224,255,0.5); /* sombra azul más intensa */
 }
 
-/* ============================
-   CÓDIGO DEL PROYECTO
-============================ */
+/* CÓDIGO DEL PROYECTO */
 .codigo-proyecto {
-    padding: 40px 10%;
-    background: #1B2A49;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0,224,255,0.4);
+    padding: 40px 10%; /* espacio interno */
+    background: #1B2A49; /* fondo azul oscuro */
+    border-radius: 12px; /* bordes redondeados */
+    box-shadow: 0 6px 20px rgba(0,224,255,0.4); /* sombra azul suave */
 }
 
 .codigo-proyecto h2 {
-    font-size: 36px;
-    color: #00E0FF;
-    margin-bottom: 20px;
-    font-family: 'Verdana', Geneva, sans-serif;
+    font-size: 36px; /* tamaño subtítulo */
+    color: #00E0FF; /* color azul */
+    margin-bottom: 20px; /* espacio inferior */
+    font-family: 'Verdana', Geneva, sans-serif; /* tipo de letra diferente */
 }
 
 .codigo-proyecto pre {
-    background: #0A0E27;
-    color: white;
-    padding: 25px;
-    border-radius: 12px;
-    overflow-x: auto;
-    box-shadow: 0 6px 16px rgba(0,224,255,0.4);
-    font-size: 18px;
-    font-family: 'Consolas', 'Courier New', monospace;
+    background: #0A0E27; /* fondo azul oscuro */
+    color: white; /* color del texto */
+    padding: 25px; /* espacio interno */
+    border-radius: 12px; /* bordes redondeados */
+    overflow-x: auto; /* permite scroll horizontal si contenido largo */
+    box-shadow: 0 6px 16px rgba(0,224,255,0.4); /* sombra azul */
+    font-size: 18px; /* tamaño de texto */
+    font-family: 'Consolas', 'Courier New', monospace; /* tipografía monoespaciada */
 }
 
-/* ============================
-   FOOTER
-============================ */
+/* FOOTER*/
 footer {
-    background: linear-gradient(135deg, #28527A, #1B2A49);
-    color: #D1E8E4;
-    text-align: center;
-    padding: 25px 10%;
-    margin-top: 40px;
-    font-size: 14px;
+    background: linear-gradient(135deg, #28527A, #1B2A49); /* degradado azul */
+    color: #D1E8E4; /* color de texto */
+    text-align: center; /* centra contenido */
+    padding: 25px 10%; /* espacio interno */
+    margin-top: 40px; /* separación del contenido previo */
+    font-size: 14px; /* tamaño de letra pequeño */
 }
 
-/* ============================
-   RESPONSIVO
-============================ */
+/* RESPONSIVO*/
 @media (max-width: 768px) {
     .menu {
         display: none;                  /* Oculto por defecto */
         flex-direction: column;         /* Links en columna */
-        justify-content: center;        /* Centra verticalmente dentro del contenedor */
+        justify-content: center;        /* Centra verticalmente */
         align-items: center;            /* Centra horizontalmente */
-        position: absolute;             /* Se posiciona respecto al header */
+        position: absolute;             /* Posicionamiento respecto al header */
         top: 60px;                      /* Debajo del header */
         left: 0;
-        width: 100%;                     /* Ancho completo de la pantalla */
-        background: #1B2A49;             /* Fondo oscuro sólido */
+        width: 100%;                     /* Ancho completo */
+        background: #1B2A49;             /* Fondo sólido */
         padding: 15px 0;                /* Espaciado arriba y abajo */
         gap: 20px;                       /* Separación entre links */
         border-bottom-left-radius: 8px;  /* Bordes redondeados */
         border-bottom-right-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,224,255,0.4);
-        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0,224,255,0.4); /* sombra azul difusa */
+        z-index: 1000;                   /* encima de otros elementos */
     }
 
     .menu.menu-open {
-        display: flex;
+        display: flex; /* muestra menú cuando está activo */
     }
 
     .menu-toggle {
-        display: block;                 /* Visible en móvil */
-        font-size: 28px;
-        cursor: pointer;
-        color: #00E0FF;
+        display: block;                 /* visible en móvil */
+        font-size: 28px;                /* tamaño icono */
+        cursor: pointer;                /* puntero */
+        color: #00E0FF;                 /* azul */
     }
 
     .menu li a {
-        font-size: 20px;                /* Links más grandes */
-        text-decoration: none;
-        color: #D1E8E4;
+        font-size: 20px;                /* tamaño de links aumentado */
+        text-decoration: none;          /* quita subrayado */
+        color: #D1E8E4;                 /* color texto */
     }
 }

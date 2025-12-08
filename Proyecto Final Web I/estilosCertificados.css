@@ -1,241 +1,252 @@
-/* ============================
+/* ===========================
    RESET Y BODY
-============================ */
+=========================== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    margin: 0; /* elimina márgenes por defecto */
+    padding: 0; /* elimina padding por defecto */
+    box-sizing: border-box; /* incluye padding y border dentro del ancho/alto total */
+    font-family: Arial, Helvetica, sans-serif; /* tipografía base */
 }
 
 body {
-    background: #0A0E27; /* azul oscuro general */
-    color: #D1E8E4;
-    overflow-x: hidden;
+    background: #0A0E27; /* fondo azul oscuro */
+    color: #D1E8E4; /* color principal del texto */
+    overflow-x: hidden; /* evita scroll horizontal */
 }
 
-/* ============================
+/* ===========================
    HEADER
-============================ */
+=========================== */
 header {
-    background: linear-gradient(135deg, #28527A, #1B2A49);
-    padding: 20px 10%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background: linear-gradient(135deg, #28527A, #1B2A49); /* degradado diagonal azul */
+    padding: 20px 10%; /* espacio interno vertical y horizontal */
+    position: sticky; /* se mantiene visible al hacer scroll */
+    top: 0; /* posición sticky desde arriba */
+    z-index: 1000; /* se coloca por encima de otros elementos */
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; /* activa Flexbox */
+    justify-content: space-between; /* separa logo y menú */
+    align-items: center; /* centra verticalmente */
 }
 
 .logo {
-    color: #00E0FF;
-    font-size: 28px;
-    font-weight: 700;
+    color: #00E0FF; /* azul brillante */
+    font-size: 28px; /* tamaño del logo */
+    font-weight: 700; /* negrita fuerte */
 }
 
+/* ===========================
+   MENÚ
+=========================== */
 .menu {
-    display: flex;
-    list-style: none;
-    gap: 25px;
+    display: flex; /* menú horizontal */
+    list-style: none; /* elimina viñetas */
+    gap: 25px; /* espacio entre links */
 }
 
 .menu li a {
-    text-decoration: none;
-    font-size: 18px;
-    color: #D1E8E4;
-    transition: 0.3s;
+    text-decoration: none; /* quita subrayado */
+    font-size: 18px; /* tamaño de texto */
+    color: #D1E8E4; /* color de los links */
+    transition: 0.3s; /* transición suave al cambiar propiedades */
 }
 
 .menu li a:hover {
-    color: #00E0FF;
+    color: #00E0FF; /* cambia a azul al pasar el mouse */
 }
 
-/* ============================
-   BOTÓN HAMBURGUESA (AÑADIDO)
-============================ */
+/* ===========================
+   BOTÓN HAMBURGUESA
+=========================== */
 .menu-toggle {
-    display: none;
-    font-size: 32px;
-    cursor: pointer;
-    color: white;
+    display: none; /* oculto en escritorio */
+    font-size: 32px; /* tamaño del icono */
+    cursor: pointer; /* cursor puntero */
+    color: white; /* color del icono */
 }
 
-/* ============================
+/* ===========================
    SECCIÓN CERTIFICADOS
-============================ */
+=========================== */
 .certificados {
-    padding: 60px 5%;
-    text-align: center;
-    background: #0A0E27; /* azul oscuro */
-    min-height: 90vh; /* ocupar casi toda la pantalla */
+    padding: 60px 5%; /* espacio interno vertical y horizontal */
+    text-align: center; /* centra contenido */
+    background: #0A0E27; /* fondo azul oscuro */
+    min-height: 90vh; /* ocupa casi toda la altura de la pantalla */
 }
 
 .certificados h2 {
-    font-size: 48px;
-    margin-bottom: 50px;
-    color: #00E0FF;
+    font-size: 48px; /* tamaño del título */
+    margin-bottom: 50px; /* separación inferior */
+    color: #00E0FF; /* azul brillante */
 }
 
 /* Carrusel horizontal */
 .carrusel-wrapper {
-    position: relative;
+    position: relative; /* contenedor relativo para las flechas absolutas */
 }
 
 .cuadricula-certificados {
-    display: flex;
-    gap: 40px;
-    overflow: hidden; /* oculta la barra de scroll */
-    padding: 20px 0;
-    height: 500px;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-    will-change: transform;
+    display: flex; /* organiza tarjetas horizontalmente */
+    gap: 40px; /* espacio entre tarjetas */
+    overflow: hidden; /* oculta scroll */
+    padding: 20px 0; /* espacio vertical */
+    height: 500px; /* altura fija del carrusel */
+    align-items: flex-start; /* alineación superior de tarjetas */
+    flex-wrap: nowrap; /* no permite que las tarjetas bajen de fila */
+    will-change: transform; /* optimización de animaciones */
 }
 
+/* Scrollbar personalizado */
 .cuadricula-certificados::-webkit-scrollbar {
-    height: 12px;
+    height: 12px; /* altura de la barra de scroll horizontal */
 }
 
 .cuadricula-certificados::-webkit-scrollbar-thumb {
-    background-color: #28527A;
-    border-radius: 6px;
+    background-color: #28527A; /* color del "thumb" de la barra */
+    border-radius: 6px; /* bordes redondeados del thumb */
 }
 
-/* Tarjetas estilo showcase */
+/* ===========================
+   TARJETAS DE CERTIFICADO
+=========================== */
 .tarjeta-certificado {
-    flex: 0 0 auto;
-    min-width: 400px;
-    max-width: 400px;
-    height: 100%;
-    background: linear-gradient(145deg, #1B2A49, #28527A);
-    padding: 20px;
-    border-radius: 14px;
-    border: 2px solid #00E0FF;
-    box-shadow: 0 8px 25px rgba(0,224,255,0.5);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    transition: transform 0.3s, box-shadow 0.3s;
+    flex: 0 0 auto; /* no crece ni se encoge, ocupa espacio fijo */
+    min-width: 400px; /* ancho mínimo */
+    max-width: 400px; /* ancho máximo */
+    height: 100%; /* altura completa del contenedor padre */
+    background: linear-gradient(145deg, #1B2A49, #28527A); /* degradado diagonal */
+    padding: 20px; /* espacio interno */
+    border-radius: 14px; /* bordes redondeados */
+    border: 2px solid #00E0FF; /* borde azul */
+    box-shadow: 0 8px 25px rgba(0,224,255,0.5); /* sombra azul intensa */
+    text-align: center; /* centra texto horizontalmente */
+    display: flex; /* Flexbox interno */
+    flex-direction: column; /* organiza elementos verticalmente */
+    justify-content: flex-start; /* inicio vertical */
+    transition: transform 0.3s, box-shadow 0.3s; /* animación suave al hover */
 }
 
 .tarjeta-certificado:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 35px rgba(0,224,255,0.6);
+    transform: translateY(-10px); /* eleva tarjeta 10px */
+    box-shadow: 0 12px 35px rgba(0,224,255,0.6); /* sombra más grande e intensa */
 }
 
 .tarjeta-certificado img {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 2px solid #00E0FF;
-    margin-bottom: 15px;
+    width: 100%; /* ocupa todo el ancho de la tarjeta */
+    height: 280px; /* altura fija */
+    object-fit: cover; /* recorta imagen para cubrir el espacio */
+    border-radius: 12px; /* bordes redondeados */
+    border: 2px solid #00E0FF; /* borde azul */
+    margin-bottom: 15px; /* espacio inferior */
 }
 
 .tarjeta-certificado h3 {
-    font-size: 22px;
-    color: #00E0FF;
-    margin-bottom: 10px;
+    font-size: 22px; /* tamaño del subtítulo */
+    color: #00E0FF; /* color azul */
+    margin-bottom: 10px; /* espacio inferior */
 }
 
 .tarjeta-certificado p {
-    font-size: 16px;
-    line-height: 1.4;
-    color: #D1E8E4;
+    font-size: 16px; /* tamaño de texto */
+    line-height: 1.4; /* espacio entre líneas */
+    color: #D1E8E4; /* color de texto */
 }
 
-/* Flechas */
+/* ===========================
+   FLECHAS DEL CARRUSEL
+=========================== */
 .flecha {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 36px;
-    background: rgba(40,82,122,0.85);
-    padding: 12px 20px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 999;
-    user-select: none;
-    transition: all 0.3s;
+    position: absolute; /* posición absoluta dentro del wrapper */
+    top: 50%; /* centrado vertical */
+    transform: translateY(-50%); /* corrección de centrado */
+    font-size: 36px; /* tamaño del icono */
+    background: rgba(40,82,122,0.85); /* fondo semitransparente */
+    padding: 12px 20px; /* espacio interno */
+    border-radius: 50%; /* circulares */
+    cursor: pointer; /* cursor puntero */
+    z-index: 999; /* sobre otros elementos */
+    user-select: none; /* no permite seleccionar texto */
+    transition: all 0.3s; /* animación suave */
 }
 
 .flecha:hover {
-    background: #00E0FF;
-    color: #1B2A49;
+    background: #00E0FF; /* cambia fondo a azul brillante */
+    color: #1B2A49; /* cambia icono a azul oscuro */
 }
 
-.flecha-izq { left: -25px; }
-.flecha-der { right: -25px; }
+.flecha-izq { left: -25px; } /* posición izquierda fuera del carrusel */
+.flecha-der { right: -25px; } /* posición derecha fuera del carrusel */
 
-/* FOOTER */
+/* ===========================
+   FOOTER
+=========================== */
 footer {
-    text-align: center;
-    padding: 25px 10%;
-    background: linear-gradient(135deg, #28527A, #1B2A49);
-    color: #D1E8E4;
-    font-size: 16px;
-    border-top: 2px solid #00E0FF;
-    margin-top: 40px;
+    text-align: center; /* centra contenido */
+    padding: 25px 10%; /* espacio interno */
+    background: linear-gradient(135deg, #28527A, #1B2A49); /* degradado azul */
+    color: #D1E8E4; /* color del texto */
+    font-size: 16px; /* tamaño de letra */
+    border-top: 2px solid #00E0FF; /* línea superior azul */
+    margin-top: 40px; /* separación del contenido previo */
 }
 
-/*  RESPONSIVO */
+/* ===========================
+   RESPONSIVO
+=========================== */
 @media (max-width: 1024px) {
     .cuadricula-certificados {
-        height: 450px;
-        gap: 25px;
+        height: 450px; /* reduce altura del carrusel */
+        gap: 25px; /* menos separación entre tarjetas */
     }
 
     .tarjeta-certificado {
-        min-width: 350px;
-        max-width: 350px;
+        min-width: 350px; /* ancho menor */
+        max-width: 350px; /* ancho menor */
     }
 }
 
 @media (max-width: 768px) {
-
     .menu {
-        display: none;
-        flex-direction: column;
-        background: #0A0E27;
-        width: 100%;
-        position: absolute;
-        top: 70px;
+        display: none; /* oculto por defecto */
+        flex-direction: column; /* links en columna */
+        background: #0A0E27; /* fondo oscuro */
+        width: 100%; /* ancho completo */
+        position: absolute; /* posición respecto al header */
+        top: 70px; /* debajo del header */
         left: 0;
-        padding: 20px;
-        gap: 15px;
-        border-top: 2px solid #00E0FF;
-        text-align: center;
+        padding: 20px; /* espacio interno */
+        gap: 15px; /* separación entre links */
+        border-top: 2px solid #00E0FF; /* línea superior azul */
+        text-align: center; /* centra links */
     }
 
     .menu.menu-open {
-        display: flex;
+        display: flex; /* mostrar menú cuando activo */
     }
 
     .menu-toggle {
-        display: block;
+        display: block; /* icono visible en móvil */
     }
 
     .cuadricula-certificados {
-        display: block;       
-        overflow-x: visible;  
-        height: auto;         
-        gap: 0;               
-        padding: 0;
+        display: block;       /* convierte a bloque vertical */
+        overflow-x: visible;  /* muestra todo horizontalmente */
+        height: auto;         /* altura automática */
+        gap: 0;               /* sin separación */
+        padding: 0;           /* sin padding */
     }
 
     .tarjeta-certificado {
-        min-width: 100%;      
-        max-width: 100%;
-        margin-bottom: 20px;  
-        height: auto;         
+        min-width: 100%;      /* ocupa ancho completo */
+        max-width: 100%;      /* ancho máximo igual al contenedor */
+        margin-bottom: 20px;  /* separación inferior */
+        height: auto;         /* altura automática */
     }
 
     .flecha {
-        display: none;
+        display: none; /* oculta flechas en móvil */
     }
 }
