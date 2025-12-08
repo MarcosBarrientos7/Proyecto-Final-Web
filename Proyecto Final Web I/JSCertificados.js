@@ -9,7 +9,7 @@ const carrusel = document.getElementById('carruselCertificados');
 carrusel.innerHTML += carrusel.innerHTML;
 
 let scrollAmount = 0;
-const scrollStep = 3; // velocidad de desplazamiento
+const scrollStep = 2; // velocidad de desplazamiento
 const scrollDelay = 10; // retraso en ms
 
 function autoScroll() {

@@ -11,12 +11,12 @@
 <header>
     <nav>
         <h1 class="logo">Portafolio</h1>
-        <p>Marcos Manuel Rodríguez Barrientos</p>
         <ul class="menu">
             <li><a href="Proyecto.html#sobreMi">Inicio</a></li>
             <li><a href="Proyecto.html#proyectos">Proyectos</a></li>
             <li><a href="Proyecto.html#contacto">Contacto</a></li>
         </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     </nav>
 </header>
 
@@ -249,6 +249,11 @@ void onCarInputWebSocketEvent(AsyncWebSocket *server,
 <footer>
     <p>© 2025 Marcos Manuel Rodríguez Barrientos. Todos los derechos reservados.</p>
 </footer>
-
+<script>
+    function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('menu-open');
+}
+</script>
 </body>
 </html>

@@ -1,14 +1,21 @@
 /* ============================
    ESTILO GENERAL
 ============================ */
-body {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-    background: #0A0E27; /* azul oscurito */
+}
+
+body {
+    background: #0A0E27;
     color: #D1E8E4;
 }
 
+/* ============================
+   HEADER
+============================ */
 header {
     background: linear-gradient(135deg, #28527A, #1B2A49);
     padding: 20px 10%;
@@ -29,6 +36,7 @@ nav {
     color: #00E0FF;
 }
 
+/* Menú normal */
 .menu {
     display: flex;
     list-style: none;
@@ -44,6 +52,14 @@ nav {
 
 .menu li a:hover {
     color: #8AC4D0;
+}
+
+/* Botón hamburguesa */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    color: #00E0FF;
+    cursor: pointer;
 }
 
 /* ============================
@@ -88,13 +104,14 @@ nav {
     box-shadow: 0 8px 20px rgba(0,224,255,0.6);
 }
 
-/* ============================
-   DESCRIPCIÓN DEL PROYECTO
-============================ */
 .descripcion-proyecto {
     flex: 1 1 400px;
     max-width: 500px;
     color: #D1E8E4;
+    background: #1B2A49;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,224,255,0.4);
 }
 
 .descripcion-proyecto h2 {
@@ -117,7 +134,7 @@ nav {
     border-radius: 14px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     margin: 40px auto;
-    max-width: 900px; /* más ancho que antes xd */
+    max-width: 900px;
     text-align: center;
 }
 
@@ -144,7 +161,7 @@ nav {
     border-radius: 8px;
     box-shadow: 0 3px 12px rgba(0,0,0,0.25);
     transition: transform 0.2s, box-shadow 0.2s;
-    width: 90%; /* ocupa casi todo el ancho */
+    width: 90%;
     text-align: left;
 }
 
@@ -154,27 +171,31 @@ nav {
 }
 
 /* ============================
-   APARTADO CÓDIGO
+   CÓDIGO DEL PROYECTO
 ============================ */
 .codigo-proyecto {
     padding: 40px 10%;
+    background: #1B2A49;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,224,255,0.4);
 }
 
 .codigo-proyecto h2 {
-    font-size: 32px;
+    font-size: 36px;
     color: #00E0FF;
     margin-bottom: 20px;
+    font-family: 'Verdana', Geneva, sans-serif;
 }
 
 .codigo-proyecto pre {
-    background: #1B2A49;
-    color: #D1E8E4;
-    padding: 20px;
+    background: #0A0E27;
+    color: white;
+    padding: 25px;
     border-radius: 12px;
     overflow-x: auto;
-    box-shadow: 0 8px 20px rgba(0,224,255,0.4);
-    font-size: 14px;
-    font-family: 'Courier New', Courier, monospace; /* fuente monoespaciada */
+    box-shadow: 0 6px 16px rgba(0,224,255,0.4);
+    font-size: 18px;
+    font-family: 'Consolas', 'Courier New', monospace;
 }
 
 /* ============================
@@ -187,4 +208,44 @@ footer {
     padding: 25px 10%;
     margin-top: 40px;
     font-size: 14px;
+}
+
+/* ============================
+   RESPONSIVO
+============================ */
+@media (max-width: 768px) {
+    .menu {
+        display: none;                  /* Oculto por defecto */
+        flex-direction: column;         /* Links en columna */
+        justify-content: center;        /* Centra verticalmente dentro del contenedor */
+        align-items: center;            /* Centra horizontalmente */
+        position: absolute;             /* Se posiciona respecto al header */
+        top: 60px;                      /* Debajo del header */
+        left: 0;
+        width: 100%;                     /* Ancho completo de la pantalla */
+        background: #1B2A49;             /* Fondo oscuro sólido */
+        padding: 15px 0;                /* Espaciado arriba y abajo */
+        gap: 20px;                       /* Separación entre links */
+        border-bottom-left-radius: 8px;  /* Bordes redondeados */
+        border-bottom-right-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,224,255,0.4);
+        z-index: 1000;
+    }
+
+    .menu.menu-open {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;                 /* Visible en móvil */
+        font-size: 28px;
+        cursor: pointer;
+        color: #00E0FF;
+    }
+
+    .menu li a {
+        font-size: 20px;                /* Links más grandes */
+        text-decoration: none;
+        color: #D1E8E4;
+    }
 }

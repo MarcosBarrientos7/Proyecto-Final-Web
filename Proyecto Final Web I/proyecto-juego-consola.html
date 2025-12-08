@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego en Consola C# - Marcos Manuel Rodríguez Barrientos</title>
-    <link rel="stylesheet" href="estilosProyectos.css">
+    <link rel="stylesheet" href="estilosProyectoArduino.css">
 </head>
 <body>
 
@@ -16,6 +16,7 @@
             <li><a href="Proyecto.html#proyectos">Proyectos</a></li>
             <li><a href="Proyecto.html#contacto">Contacto</a></li>
         </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     </nav>
 </header>
 
@@ -38,7 +39,9 @@
             <h2>Descripción</h2>
             <p>
                 Este juego en consola está realizado en C# usando caracteres ASCII para representar
-                al personaje y los elementos del juego. El objetivo es recolectar monedas mientras
+                al personaje y los elementos del juego, realizado como proyecto final de la materia de programación I,
+                ayudando a reforzar y adquirir mas conocimineto sobre condicionlaes, bucles, vectores y matrices.
+                El objetivo es recolectar monedas mientras
                 se evitan obstáculos. Ideal para practicar la lógica de juegos.
             </p>
         </div>
@@ -227,6 +230,11 @@ class Program {
 <footer>
     <p>© 2025 Marcos Manuel Rodríguez Barrientos. Todos los derechos reservados.</p>
 </footer>
-
+<script>
+    function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('menu-open');
+}
+</script>
 </body>
 </html>

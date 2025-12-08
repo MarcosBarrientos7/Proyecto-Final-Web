@@ -16,6 +16,7 @@
             <li><a href="Proyecto.html#proyectos">Proyectos</a></li>
             <li><a href="Proyecto.html#contacto">Contacto</a></li>
         </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     </nav>
 </header>
 
@@ -158,6 +159,11 @@ namespace JuegoMemoriaWPF
 <footer>
     <p>© 2025 Marcos Manuel Rodríguez Barrientos. Todos los derechos reservados.</p>
 </footer>
-
+<script>
+    function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('menu-open');
+}
+</script>
 </body>
 </html>
