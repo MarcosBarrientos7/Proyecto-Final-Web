@@ -411,6 +411,39 @@ button.boton:hover {
     box-shadow: 0 0 15px rgba(0,176,255,0.6); /* sombra hover */
 }
 
+/* BOTON VOLVER A SUBIR */
+.boton-volver {
+    background-color: #00e0ff; /* Azul brillante */
+    color: black;
+    border: none;
+    border-radius: 50%; /* Botón redondo */
+    width: 50px;
+    height: 50px;
+    font-size: 3rem; /* Flecha grande */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right; /* A la derecha */
+    margin: 0 0 50px 0; /* Separa del footer 50px hacia arriba */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.boton-volver:hover {
+    background-color: #00b8cc; /* Azul más oscuro al pasar el mouse */
+    transform: translateY(-3px);
+}
+
+/* Quitar estilos por defecto del <a> dentro del botón */
+.boton-volver a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 2rem; /* Tamaño de la flecha */
+    display: block;
+    text-align: center;
+    line-height: 1;
+}
+
 /* FOOTER*/
 footer {
     padding: 20px; /* espacio interno */
