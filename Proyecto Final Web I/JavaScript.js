@@ -33,6 +33,44 @@ formulario.addEventListener('submit', function(event) {
         return;
     }
 
-    alert("¡Formulario enviado correctamente!");
+    alert("¡Formulario enviado correctamente "+nombre+"!");
     formulario.reset(); // Limpiar el formulario
 });
+
+function mostrarDescripcion(lenguaje) {
+    const cuadro = document.getElementById("descripcionLenguaje");
+
+    // Si el cuadro ya tiene el mismo texto se oculta
+    if (cuadro.dataset.actual === lenguaje) {
+        cuadro.classList.remove("activo");
+        cuadro.dataset.actual = "";
+        return;
+    }
+
+    let texto = "";
+
+    switch (lenguaje) {
+        case "csharp":
+            texto = "<b>C#</b>: Usado para crear aplicaciones de escritorio, videojuegos con Unity, software empresarial y desarrollo con .NET.";
+            break;
+
+        case "javascript":
+            texto = "<b>JavaScript</b>: Lenguaje principal del desarrollo web. Permite crear páginas interactivas, animaciones y aplicaciones dinámicas.";
+            break;
+
+        case "python":
+            texto = "<b>Python</b>: Ideal para inteligencia artificial, análisis de datos, automatización, backend y aprendizaje automático.";
+            break;
+
+        case "sql":
+            texto = "<b>SQL</b>: Lenguaje para crear, gestionar y consultar bases de datos. Fundamental para manejar información profesionalmente.";
+            break;
+    }
+
+    // Actualizar contenido
+    cuadro.innerHTML = texto;
+    cuadro.dataset.actual = lenguaje;
+
+    // Mostrar cuadro
+    cuadro.classList.add("activo");
+}

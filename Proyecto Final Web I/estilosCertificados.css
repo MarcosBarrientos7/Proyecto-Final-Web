@@ -1,6 +1,4 @@
-/* ===========================
-   RESET Y BODY
-=========================== */
+/* GENERAL */
 * {
     margin: 0; /* elimina márgenes por defecto */
     padding: 0; /* elimina padding por defecto */
@@ -14,9 +12,7 @@ body {
     overflow-x: hidden; /* evita scroll horizontal */
 }
 
-/* ===========================
-   HEADER
-=========================== */
+/* HEADER */
 header {
     background: linear-gradient(135deg, #28527A, #1B2A49); /* degradado diagonal azul */
     padding: 20px 10%; /* espacio interno vertical y horizontal */
@@ -37,9 +33,7 @@ nav {
     font-weight: 700; /* negrita fuerte */
 }
 
-/* ===========================
-   MENÚ
-=========================== */
+/* MENÚ */
 .menu {
     display: flex; /* menú horizontal */
     list-style: none; /* elimina viñetas */
@@ -57,9 +51,7 @@ nav {
     color: #00E0FF; /* cambia a azul al pasar el mouse */
 }
 
-/* ===========================
-   BOTÓN HAMBURGUESA
-=========================== */
+/* BOTÓN HAMBURGUESA */
 .menu-toggle {
     display: none; /* oculto en escritorio */
     font-size: 32px; /* tamaño del icono */
@@ -67,9 +59,7 @@ nav {
     color: white; /* color del icono */
 }
 
-/* ===========================
-   SECCIÓN CERTIFICADOS
-=========================== */
+/* SECCIÓN CERTIFICADOS*/
 .certificados {
     padding: 60px 5%; /* espacio interno vertical y horizontal */
     text-align: center; /* centra contenido */
@@ -109,9 +99,7 @@ nav {
     border-radius: 6px; /* bordes redondeados del thumb */
 }
 
-/* ===========================
-   TARJETAS DE CERTIFICADO
-=========================== */
+/* TARJETAS DE CERTIFICADO*/
 .tarjeta-certificado {
     flex: 0 0 auto; /* no crece ni se encoge, ocupa espacio fijo */
     min-width: 400px; /* ancho mínimo */
@@ -155,9 +143,7 @@ nav {
     color: #D1E8E4; /* color de texto */
 }
 
-/* ===========================
-   FLECHAS DEL CARRUSEL
-=========================== */
+/* FLECHAS DEL CARRUSEL */
 .flecha {
     position: absolute; /* posición absoluta dentro del wrapper */
     top: 50%; /* centrado vertical */
@@ -180,9 +166,7 @@ nav {
 .flecha-izq { left: -25px; } /* posición izquierda fuera del carrusel */
 .flecha-der { right: -25px; } /* posición derecha fuera del carrusel */
 
-/* ===========================
-   FOOTER
-=========================== */
+/* FOOTER */
 footer {
     text-align: center; /* centra contenido */
     padding: 25px 10%; /* espacio interno */
@@ -193,9 +177,7 @@ footer {
     margin-top: 40px; /* separación del contenido previo */
 }
 
-/* ===========================
-   RESPONSIVO
-=========================== */
+/* RESPONSIVO */
 @media (max-width: 1024px) {
     .cuadricula-certificados {
         height: 450px; /* reduce altura del carrusel */

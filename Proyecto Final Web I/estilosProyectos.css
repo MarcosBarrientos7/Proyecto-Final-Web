@@ -1,6 +1,4 @@
-/* ===========================
-   RESET Y BODY
-=========================== */
+/* GENERAL*/
 * {
     margin: 0; /* elimina márgenes por defecto de todos los elementos */
     padding: 0; /* elimina padding por defecto de todos los elementos */
@@ -13,9 +11,7 @@ body {
     color: white; /* texto blanco por defecto */
 }
 
-/* ===========================
-   HEADER
-=========================== */
+/* HEADER*/
 header {
     background: linear-gradient(135deg, #28527A, #1B2A49); /* degradado diagonal */
     color: white; /* texto por defecto */
@@ -54,9 +50,7 @@ nav {
     color: #8AC4D0; /* cambia a azul claro al pasar el mouse */
 }
 
-/* ===========================
-   HAMBURGUESA (MÓVIL)
-=========================== */
+/* HAMBURGUESA */
 .menu-toggle {
     display: none; /* oculto en escritorio */
     font-size: 32px; /* tamaño del icono */
@@ -77,9 +71,7 @@ nav {
     border-top: 2px solid #00E0FF; /* línea azul superior */
 }
 
-/* ===========================
-   MAIN
-=========================== */
+/* MAINCITO */
 main {
     padding: 60px 10%; /* espacio interno del contenido */
 }
@@ -91,9 +83,7 @@ main h1 {
     color: #00E0FF; /* azul brillante */
 }
 
-/* ===========================
-   CONTENEDOR FLEX: VIDEO + DESARROLLO
-=========================== */
+/* CONTENEDOR VIDEO Y DESARROLLO*/
 .contenedor-proyecto {
     display: flex; /* Flexbox horizontal */
     flex-wrap: wrap; /* permite que los elementos bajen de fila si no caben */
@@ -141,9 +131,7 @@ main h1 {
     line-height: 1.6; /* espacio entre líneas */
 }
 
-/* ===========================
-   DESARROLLO DEL PROYECTO
-=========================== */
+/* DESARROLLO DEL PROYECTO */
 .desarrollo-proyecto {
     background: #28527A; /* fondo azul medio */
     padding: 35px 25px; /* espacio interno */
@@ -186,9 +174,7 @@ main h1 {
     box-shadow: 0 6px 16px rgba(0,224,255,0.5); /* sombra más intensa */
 }
 
-/* ===========================
-   CÓDIGO DEL PROYECTO
-=========================== */
+/* CÓDIGO DEL PROYECTO */
 section {
     margin-top: 40px; /* separación superior */
 }
@@ -211,9 +197,7 @@ pre {
     font-family: 'Courier New', Courier, monospace; /* fuente monoespaciada */
 }
 
-/* ===========================
-   BANNER PROYECTO
-=========================== */
+/* BANNER PROYECTO */
 .banner-proyecto {
     text-align: center; /* centra contenido */
     padding: 50px 20px; /* espacio interno */
@@ -234,9 +218,7 @@ pre {
     margin-top: 10px; /* separación superior */
 }
 
-/* ===========================
-   FOOTER
-=========================== */
+/* FOOTER */
 footer {
     text-align: center; /* centra contenido */
     padding: 20px; /* espacio interno */
@@ -245,9 +227,7 @@ footer {
     margin-top: 40px; /* separación del contenido anterior */
 }
 
-/* ===========================
-   RESPONSIVO
-=========================== */
+/* RESPONSIVO*/
 @media (max-width: 1024px) {
     .contenedor-proyecto {
         gap: 30px; /* reduce separación entre elementos */

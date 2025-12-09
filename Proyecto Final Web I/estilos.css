@@ -1,6 +1,4 @@
-/* ===========================
-   ESTILO GLOBAL
-=========================== */
+/* ESTILO GENERAL*/
 * {
     margin: 0; /* elimina márgenes por defecto de todos los elementos */
     padding: 0; /* elimina padding por defecto */
@@ -13,9 +11,7 @@ body {
     color: #f0f0f0; /* color de texto principal */
 }
 
-/* ===========================
-   ENCABEZADO
-=========================== */
+/* ENCABEZADO */
 header {
     background: linear-gradient(135deg, #0b1b3a, #1e3a6a); /* degradado diagonal */
     color: white; /* color del texto dentro del header */
@@ -44,9 +40,7 @@ nav {
     font-weight: bold; /* negrita */
 }
 
-/* ===========================
-   MENÚ
-=========================== */
+/* MENÚ */
 .menu {
     display: flex; /* organiza los items horizontalmente */
     list-style: none; /* elimina viñetas de lista */
@@ -83,9 +77,7 @@ nav {
     cursor: pointer; /* cambia cursor a puntero */
 }
 
-/* ===========================
-   FOTO DE PERFIL
-=========================== */
+/* FOTO DE PERFIL */
 .foto-perfil {
     display: flex; /* Flexbox para centrar */
     justify-content: center; /* centra horizontalmente */
@@ -102,9 +94,12 @@ nav {
     /* sombra difusa: 0 horizontal, 0 vertical, 20px blur, azul semitransparente */
 }
 
-/* ===========================
-   PRESENTACIÓN
-=========================== */
+.foto-perfil img:hover {
+    transform: scale(1.08); /* pequeño zoom */
+    box-shadow: 0 0 25px rgba(0, 224, 255, 0.7); /* brillo bonito */
+}
+
+/* PRESENTACIÓN*/
 .presentacion {
     text-align: center; /* centra todo el contenido */
     margin-top: 30px; /* espacio superior */
@@ -139,16 +134,12 @@ nav {
     transform: translateY(-3px); /* levanta el botón 3px */
 }
 
-/* ===========================
-   SECCIONES GENERALES
-=========================== */
+/* SECCIONES GENERALES */
 section {
     padding: 60px 10%; /* espacio interno vertical y horizontal */
 }
 
-/* ===========================
-   SOBRE MÍ + LENGUAJES
-=========================== */
+/* SOBRE MÍ y LENGUAJES */
 .sobre-lenguajes {
     display: flex; /* Flexbox horizontal */
     justify-content: space-between; /* espacio entre bloques */
@@ -157,9 +148,34 @@ section {
     padding: 60px 10%; /* espacio interno */
 }
 
-/* ===========================
-   CUADRO SOBRE MÍ
-=========================== */
+.lenguajes-imgs img {
+    width: 120px;
+    margin: 15px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+
+.lenguajes-imgs img:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 10px #00e0ff);
+}
+
+/* Descripción del lenguaje */
+.descripcion-lenguaje {
+    margin-top: 20px;
+    padding: 15px;
+    background: #1b2a49;
+    color: white;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    display: none; /* Se activa al hacer clic */
+}
+
+.descripcion-lenguaje.activo {
+    display: block;
+}
+
+/*CUADRO SOBRE MÍ= */
 .sobre {
     flex: 1; /* ocupa el mismo espacio que otros flex items */
     background: #142a50; /* fondo azul profundo */
@@ -177,9 +193,7 @@ section {
     padding-bottom: 5px; /* espacio entre texto y línea */
 }
 
-/* ===========================
-   CUADRO LENGUAJES
-=========================== */
+/* CUADRO LENGUAJES */
 .lenguajes {
     flex: 1; /* ocupa espacio igual que otros flex items */
     background: #142a50; /* azul oscuro */
@@ -196,9 +210,7 @@ section {
     padding-bottom: 5px; /* espacio debajo del texto */
 }
 
-/* ===========================
-   GRID DE IMÁGENES DE LENGUAJES
-=========================== */
+/*GRID DE IMÁGENES DE LENGUAJES */
 .lenguajes-imgs {
     margin-top: 25px; /* espacio superior */
     display: grid; /* activa Grid */
@@ -216,9 +228,7 @@ section {
     transform: rotate(var(--rotation, 0deg)); /* rotación opcional mediante variable CSS */
 }
 
-/* ===========================
-   SECCIÓN HABILIDADES
-=========================== */
+/* SECCIÓN HABILIDADES */
 .habilidades {
     background: linear-gradient(135deg, #0d1f3c, #1a3a6e); /* azul degradado intenso */
     padding: 60px 10%; /* espacio interno */
@@ -270,9 +280,7 @@ section {
     box-shadow: 0 0 25px rgba(0,224,255,0.6); /* aumenta sombra al pasar mouse */
 }
 
-/* ===========================
-   PROYECTOS
-=========================== */
+/*PROYECTOS */
 .cuadricula-proyectos {
     display: grid; /* activa Grid */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
@@ -318,9 +326,7 @@ section {
     color: #0080cc; /* cambia color al pasar mouse */
 }
 
-/* ===========================
-   CONTACTO
-=========================== */
+/* CONTACTO*/
 #contacto {
     background: linear-gradient(135deg, #0d1f3c, #1a3a6e); /* azul degradado */
     padding: 80px 10%; /* espacio interno */
@@ -405,9 +411,7 @@ button.boton:hover {
     box-shadow: 0 0 15px rgba(0,176,255,0.6); /* sombra hover */
 }
 
-/* ===========================
-   FOOTER
-=========================== */
+/* FOOTER*/
 footer {
     padding: 20px; /* espacio interno */
     text-align: center; /* centra texto */
@@ -416,9 +420,7 @@ footer {
     box-shadow: 0 -4px 10px rgba(0,0,0,0.3); /* sombra hacia arriba */
 }
 
-/* ===========================
-   RESPONSIVO
-=========================== */
+/* RESPONSIVO */
 @media (max-width: 900px) {
     .sobre-lenguajes {
         flex-direction: column; /* apila los bloques */
@@ -439,9 +441,7 @@ footer {
     }
 }
 
-/* ===========================
-   MENÚ RESPONSIVO
-=========================== */
+/* MENÚ RESPONSIVO */
 @media (max-width: 768px) {
     nav {
         position: relative; /* contenedor del menú absoluto */
